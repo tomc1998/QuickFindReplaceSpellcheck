@@ -2,7 +2,12 @@ CC=gcc
 OBJ=obj
 SRC=src
 BIN=bin
-CFLAGS=-O -DWIN32 -Isrc
+ifeq ($(OS),Windows_NT)
+	CFLAGS=-O -DWIN32 -Isrc
+else
+	CFLAGS=-O -Isrc
+endif
+
 
 all: $(BIN)/spellcheck.exe
 
